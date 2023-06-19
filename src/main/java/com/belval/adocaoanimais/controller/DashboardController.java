@@ -2,6 +2,7 @@ package com.belval.adocaoanimais.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
+
+import org.springframework.data.domain.Sort;
 
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
@@ -33,7 +36,7 @@ public class DashboardController {
 	
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("dashboard");
-		List<Usuario> usuarios = this.usuarioRepository.findAll();
+		List<Usuario> usuarios = this.usuarioRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 		mv.addObject("usuario", usuarios);
 		return mv;
 	}
