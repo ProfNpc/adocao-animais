@@ -88,7 +88,7 @@
 									<td > 
 										<a th:href="@{/pet/admin/usuario/permissao/{id} (id=${usuario.id})}"> 
 											<span
-												th:class="'  col-12 badge '+${usuario.permissao.descricao == 'Administrador' ? ' text-bg-danger' : usuario.permissao.descricao == 'Suporte' ? ' text-bg-Warning' : usuario.permissao.descricao == 'Colaborador' ? ' text-bg-success' : 'text-bg-info'}"
+												th:class="'  col-12 badge '+${usuario.permissao.descricao == 'Administrador' ? ' text-bg-danger' : usuario.permissao.descricao == 'Suporte' ? ' text-bg-Warning' : usuario.permissao.descricao == 'Colaborador' ? ' text-bg-success' : usuario.permissao == null ? ' text-bg-success' : 'text-bg-info'}"
 												th:text="${usuario.permissao.descricao}" style="height: 26px;">
 												Comun</span></a>
 

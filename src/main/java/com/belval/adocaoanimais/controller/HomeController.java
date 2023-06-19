@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.controller;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.enums.Permissao;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.model.Usuario;
@@ -62,6 +64,21 @@ public class HomeController {
 		mv.addObject("nomeUsuario", nomeUsuario);
 		model.addAttribute("postagem", postagemRepository.findAllAtivas());
 		System.out.println("p é -> " + postagemRepository.findAllAtivas());
+		
+//		Usuario usuario2 = new Usuario();
+//		List<Usuario> usuarios = this.usuarioRepository.findAll();
+//		ArrayList<Usuario> usuarios2 = new ArrayList<>();
+//		for (Usuario usuario : usuarios) {
+//			System.out.println("AQUI VER ::::::::::::::::::::::::::::::: "+usuario.getPermissao());
+//			usuario2=usuario;
+//			if(usuario.getPermissao() == null) {usuario2.setPermissao(Permissao.USUARIO);}
+//			usuarios2.add(usuario2);
+//		}
+//		
+//		for (Usuario usuario : usuarios2) {
+//			System.out.println("AQUI VER 2 ::::::::::::::::::::::::::::::: "+usuario.getPermissao());
+//		}
+//		System.out.println("AQUI VER ::::::::::::::::::::::::::::::: "+usuarios);
 		return mv;
 
 	}

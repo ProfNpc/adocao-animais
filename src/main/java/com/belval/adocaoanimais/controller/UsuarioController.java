@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -197,7 +198,16 @@ public class UsuarioController {
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("usuario/index");
 		List<Usuario> usuarios = this.usuarioRepository.findAll();
-		mv.addObject("usuario", usuarios);
+		Usuario usuario2 = new Usuario();
+		ArrayList<Usuario> usuarios2 = new ArrayList<>();
+		for (Usuario usuario : usuarios) {
+			System.out.println("AQUI VER ::::::::::::::::::::::::::::::: "+usuario.getPermissao());
+			usuario2=usuario;
+			if(usuario.getPermissao() == null) {usuario2.setPermissao(Permissao.USUARIO);}
+			if(usuario.getNome() == null) {usuario2.setNome(usuario.getEmail());}
+			usuarios2.add(usuario2);
+		} 
+		mv.addObject("usuario", usuarios2);
 		// mv.addObject("listaPermissao", Permissao.values());
 		return mv;
 	}
